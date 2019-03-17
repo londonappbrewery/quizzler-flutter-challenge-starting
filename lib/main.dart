@@ -35,7 +35,7 @@ class _QuizPageState extends State<QuizPage> {
     bool correctAnswer = quizBrain.getCorrectAnswer();
 
     setState(() {
-      //TODO: Step 4 - Use IF/ELSE to check if we've reached the end of the quiz. If so, ❶ show an alert using rFlutter_alert, ❷ reset the questionNumber, ❸ empty out the scoreKeeper.
+      //TODO: Step 4 - Use IF/ELSE to check if we've reached the end of the quiz. If so, ❶ show an alert using rFlutter_alert (remember to read the docs for the package!)  ❷ reset the questionNumber, ❸ empty out the scoreKeeper.
 
       //TODO: Step 6 - If we've not reached the end, ELSE do the answer checking steps below 👇
       if (userPickedAnswer == correctAnswer) {
