@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-//TODO: Step 2 - Import the rFlutter_Alert package here.
 import 'quiz_brain.dart';
 
 QuizBrain quizBrain = QuizBrain();
@@ -33,21 +32,15 @@ class _QuizPageState extends State<QuizPage> {
 
   void checkAnswer(bool userPickedAnswer) {
     bool correctAnswer = quizBrain.getCorrectAnswer();
-
     setState(() {
-      //TODO: Step 4 - Use IF/ELSE to check if we've reached the end of the quiz. If true, execute Part A, B, C, D.
-      //TODO: Step 4 Part A - show an alert using rFlutter_alert (remember to read the docs for the package!)
-      //HINT! Step 4 Part B is in the quiz_brain.dart
-      //TODO: Step 4 Part C - reset the questionNumber,
-      //TODO: Step 4 Part D - empty out the scoreKeeper.
-
-      //TODO: Step 5 - If we've not reached the end, ELSE do the answer checking steps below 👇
       if (userPickedAnswer == correctAnswer) {
+        print('user got it right!');
         scoreKeeper.add(Icon(
           Icons.check,
           color: Colors.green,
         ));
       } else {
+        print('user git it wrong');
         scoreKeeper.add(Icon(
           Icons.close,
           color: Colors.red,
@@ -56,6 +49,8 @@ class _QuizPageState extends State<QuizPage> {
       quizBrain.nextQuestion();
     });
   }
+
+  int questionNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -82,39 +77,40 @@ class _QuizPageState extends State<QuizPage> {
         Expanded(
           child: Padding(
             padding: EdgeInsets.all(15.0),
-            child: FlatButton(
-              textColor: Colors.white,
-              color: Colors.green,
-              child: Text(
+            child: TextButton(
+              onPressed: () {
+                checkAnswer(true);
+              },
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.green, // Background Color
+              ),
+              child: const Text(
                 'True',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
                 ),
               ),
-              onPressed: () {
-                //The user picked true.
-                checkAnswer(true);
-              },
             ),
           ),
         ),
         Expanded(
           child: Padding(
             padding: EdgeInsets.all(15.0),
-            child: FlatButton(
-              color: Colors.red,
-              child: Text(
-                'False',
-                style: TextStyle(
-                  fontSize: 20.0,
-                  color: Colors.white,
-                ),
-              ),
+            child: TextButton(
               onPressed: () {
-                //The user picked false.
                 checkAnswer(false);
               },
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.red, // Background Color
+              ),
+              child: const Text(
+                'False',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                ),
+              ),
             ),
           ),
         ),
