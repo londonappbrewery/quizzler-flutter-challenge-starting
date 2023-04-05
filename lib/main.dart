@@ -82,9 +82,14 @@ class _QuizPageState extends State<QuizPage> {
         Expanded(
           child: Padding(
             padding: EdgeInsets.all(15.0),
-            child: FlatButton(
-              textColor: Colors.white,
-              color: Colors.green,
+            child: TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.green,
+              ),
+              onPressed: () {
+                //The user picked true.
+                checkAnswer(true);
+              },
               child: Text(
                 'True',
                 style: TextStyle(
@@ -92,18 +97,20 @@ class _QuizPageState extends State<QuizPage> {
                   fontSize: 20.0,
                 ),
               ),
-              onPressed: () {
-                //The user picked true.
-                checkAnswer(true);
-              },
             ),
           ),
         ),
         Expanded(
           child: Padding(
             padding: EdgeInsets.all(15.0),
-            child: FlatButton(
-              color: Colors.red,
+            child: TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.red,
+              ),
+              onPressed: () {
+                //The user picked false.
+                checkAnswer(false);
+              },
               child: Text(
                 'False',
                 style: TextStyle(
@@ -111,10 +118,6 @@ class _QuizPageState extends State<QuizPage> {
                   color: Colors.white,
                 ),
               ),
-              onPressed: () {
-                //The user picked false.
-                checkAnswer(false);
-              },
             ),
           ),
         ),
